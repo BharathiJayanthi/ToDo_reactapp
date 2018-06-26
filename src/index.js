@@ -1,24 +1,11 @@
-import React,{ Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AddNewTask from './components/addnewtask';
-import ToDoAppList from './components/todoapplist';
+import ToDo from './components/todo';
 
-class Todo extends Component{
-	constructor() {
-		super();
-	}
 
-	render(){
-		return(
-			<div>
-			<h1>ToDo App</h1>
-			<AddNewTask />
-			<ToDoAppList />
-			</div>
-			);
-	}
-}
+var tasksList = ["tasks1", "tasks2"];
 
-ReactDOM.render(<Todo />, document.getElementById('root'));
+
+ReactDOM.render(<ToDo tasks={tasksList} />, document.getElementById('root'));
 
