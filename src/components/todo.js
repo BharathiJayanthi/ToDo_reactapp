@@ -11,7 +11,9 @@ export default class ToDo extends Component{
 			tasks: props.tasks
 		}
 		this.updatedList = this.updatedList.bind(this);
+		this.removeTask = this.removeTask.bind(this);
 	}
+
 	updatedList(text){
      var updatedTask = this.state.tasks;
        updatedTask.push(text);
@@ -19,6 +21,16 @@ export default class ToDo extends Component{
        	tasks: updatedTask
        })
 	}
+    
+
+    removeTask(text){
+		var removeTasks= this.state.tasks;
+       removeTasks.splice(removeTasks.indexOf(text), 1);
+       this.setState({
+       	tasks: removeTasks
+       })
+	}
+
 
 	render(){
 		
@@ -26,7 +38,7 @@ export default class ToDo extends Component{
 			<div>
 			<h1>ToDo App</h1>
 			<AddNewTask updatedList={this.updatedList} />
-			<ToDoAppList tasks={this.state.tasks} />
+			<ToDoAppList tasks={this.state.tasks} remove={this.removeTask}/>
 			</div>
 			);
 	}
