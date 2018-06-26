@@ -19,7 +19,9 @@ export default class ToDo extends Component{
        updatedTask.push(text);
        this.setState({
        	tasks: updatedTask
-       })
+       });
+       this.updateLocalStorage(updatedTask);
+
 	}
     
 
@@ -28,7 +30,13 @@ export default class ToDo extends Component{
        removeTasks.splice(removeTasks.indexOf(text), 1);
        this.setState({
        	tasks: removeTasks
-       })
+       });
+        this.updateLocalStorage(removeTasks);
+
+	}
+
+	updateLocalStorage(updatedTask, removeTasks){
+		localStorage.setItem('storedTasks', JSON.stringify(updatedTask, removeTasks))
 	}
 
 
